@@ -38,7 +38,7 @@ void draw_texture(hunter_t *hunter, texture_t *tex, perso_t *perso, persorect_t 
 
 void destroy_all(hunter_t *hunter, texture_t *tex, perso_t *perso, persorect_t *persorect)
 {
+    sfTexture_destroy(perso->t_perso);
+    sfTexture_destroy(tex->t_background);
     sfRenderWindow_destroy(hunter->window);
-    sfRenderTexture_destroy(perso->t_perso);
-    sfRenderTexture_destroy(tex->t_background);
 }
