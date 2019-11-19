@@ -20,7 +20,7 @@ typedef struct hunter_s
     sfRenderWindow *window;
     sfVideoMode video;
     sfEvent event;
-
+    sfMusic *music;
 } hunter_t;
 
 typedef struct perso_s
@@ -36,6 +36,7 @@ typedef struct persorect_s
     sfSprite *s_persorect;
     sfRectangleShape *shape;
     sfVector2f x;
+    sfVector2f pos_perso;
 
 } persorect_t;
 
@@ -43,6 +44,7 @@ typedef struct texture_s
 {
     sfTexture *t_background;
     sfSprite *s_back;
+
 
 } texture_t;
 
@@ -58,7 +60,7 @@ void move_perso(temp_t *time, persorect_t *persorect, perso_t *perso, hunter_t *
 void analyse_events(hunter_t *hunter);
 void window(hunter_t *hunter, texture_t *tex, perso_t *perso, persorect_t *persorect, temp_t *time);
 void create_sprite(texture_t *tex, perso_t *perso, persorect_t *persorect);
-void create_texture(texture_t *tex, perso_t *perso, temp_t *time);
+void create_texture(texture_t *tex, perso_t *perso, temp_t *time, hunter_t *hunter);
 void set_texture(texture_t *tex, perso_t *perso, persorect_t *persorect);
 void draw_texture(hunter_t *hunter, texture_t *tex, perso_t *perso, persorect_t *persorect);
 void destroy_all(hunter_t *hunter, texture_t *tex, perso_t *perso, persorect_t *persorect);
