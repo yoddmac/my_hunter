@@ -6,12 +6,13 @@ NAME	=	my_hunter
 
 CFLAGS	=	-W -Wall -Wextra
 
-CFLAGS	=	-lcsfml-graphics -lcsfml-audio -lcsfml-system
+CFLAGS	=	-lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
 
 SRC	=	open_window.c \
 		create_sprite.c \
 		malloc.c \
-		move_perso.c
+		move_perso.c \
+		text.c
 
 OBJ	=$(SRC:.c=.o)
 
