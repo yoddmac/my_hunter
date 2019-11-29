@@ -12,7 +12,9 @@ SRC	=	open_window.c \
 		create_sprite.c \
 		malloc.c \
 		move_perso.c \
-		text.c
+		text.c \
+		my_revstr.c \
+		end_game.c
 
 OBJ	=$(SRC:.c=.o)
 

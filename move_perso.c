@@ -11,47 +11,48 @@ int move_perso(temp_t *time, persorect_t *persorect,
 perso_t *perso, hunter_t *hunter)
 {
     persorect->pos_perso.y = 500;
+    persorect->pos_perso2.y = 400;
     time->time_clock = sfClock_getElapsedTime(time->clock);
     time->sec = time->time_clock.microseconds / 1000000.0;
     if (time->sec > 0.07) {
         persorect->rect.left += 80;
-        printf("left1 = %d\n", persorect->rect.left);
-        if (persorect->rect.left >= 640)
-        {
-            persorect->rect.left = 0;
-        }
-        if (persorect->pos_perso.x > 1850) {
-            persorect->direction = - 1;
-        }
-        persorect->pos_perso.x += 23 * persorect->direction;
-        sfSprite_setPosition(perso->s_perso, persorect->pos_perso);
-        //sfSprite_setPosition(perso->s_perso2, persorect->pos_perso);
+        persorect->rect2.left += 80;
 
-        if(persorect->pos_perso.x < 0) {
-            persorect->direction = 1;
+        if (persorect->rect.left >= 640 && persorect->rect2.left >= 640) {
+            persorect->rect.left = 0;
+            persorect->rect2.left = 0;
         }
+
+        if (persorect->pos_perso.x >= 1850)
+            persorect->direction = - 1;
+        if (persorect->pos_perso2.x >= 1850)
+            persorect->direction2 = - 1;
+
+        persorect->pos_perso.x += 20 * persorect->direction;
+        persorect->pos_perso2.x += 23 * persorect->direction2;
+        sfSprite_setPosition(perso->s_perso, persorect->pos_perso);
+        sfSprite_setPosition(perso->s_perso2, persorect->pos_perso2);
+
+        if(persorect->pos_perso.x < 0 )
+            persorect->direction = 1;
+        if(persorect->pos_perso2.x < 0) 
+            persorect->direction2 = 1;
         sfClock_restart(time->clock);
-        persorect->pos_perso.x += 23 * persorect->direction;
+        persorect->pos_perso.x += 20 * persorect->direction;
+        persorect->pos_perso2.x += 23 * persorect->direction2;
     }
 }
 
-int move_perso2(temp_t *time, persorect_t *persorect,
-perso_t *perso, hunter_t *hunter)
+int random_gen()
 {
-    //persorect->pos_perso2.y = 200;
-    time->time2 = sfClock_getElapsedTime(time->clock);
-    time->sec2 = time->time2.microseconds / 1000000.0;
-    if (time->sec2 > 0.07) {
-        printf("ici");
-        printf("left2 = %d\n", persorect->rect2.left);
-        persorect->rect2.left += 80;
-        if (persorect->rect2.left >= 640)
-        {
-            printf("ici");
-            persorect->rect2.left = 0;
-        }
-        sfClock_restart(time->clock2);
-    }
+    int num = (rand() % 2 - 1 + 1);
+    return (num);
+}
+
+int random_gen2()
+{
+    int num = (rand() % 3 - 1 + 1);
+    return (num);
 }
 
 void game_hit(texture_t *tex, hunter_t *window)
@@ -68,19 +69,12 @@ void game_hit(texture_t *tex, hunter_t *window)
     }
 }
 
-int random_gen()
-{
-    int num = (rand() % 2 - 1 + 1);
-
-    return (num);
-}
-
-void display_hit(texture_t *tex, hunter_t *window)
+void display_hit(texture_t *tex, hunter_t *hunter, persorect_t *persorect)
 {
     text_create(tex);
     text_from(tex);
     text_font(tex);
-    write_text(tex);
+    write_text(tex, persorect);
     size_text(tex);
     set_text_color(tex);
 }

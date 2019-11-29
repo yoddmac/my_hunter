@@ -10,6 +10,7 @@
 void create_sprite(hunter_t *hunter, texture_t *tex, perso_t *perso, persorect_t *persorect)
 {
     tex->s_back = sfSprite_create();
+    perso->s_game_over = sfSprite_create();
     perso->s_perso = sfSprite_create();
     perso->s_perso2 = sfSprite_create();
     persorect->s_persorect = sfSprite_create();
@@ -29,8 +30,8 @@ hunter_t *hunter)
     perso->t_perso2 = sfTexture_createFromFile("./png/crevette2.png", NULL);
     tex->t_tube_back = sfTexture_createFromFile("./png/tube.png", NULL);
     perso->t_cursor = sfTexture_createFromFile("./png/viseur.png", NULL);
+    perso->t_game_over = sfTexture_createFromFile("./png/gameover.png", NULL);
     time->clock = sfClock_create();
-    time->clock2 = sfClock_create();
     tex->clock_text = sfClock_create();
 }
 
@@ -39,6 +40,7 @@ persorect_t *persorect)
 {
     sfSound_setBuffer(hunter->sound, hunter->buffer);
     sfSprite_setTexture(tex->s_tube_back, tex->t_tube_back, sfTrue);
+    sfSprite_setTexture(perso->s_game_over, perso->t_game_over, sfTrue);
     sfSprite_setTexture(tex->s_back, tex->t_background, sfTrue);
     sfSprite_setTexture(perso->s_perso, perso->t_perso, sfTrue);
     sfSprite_setTexture(perso->s_perso2, perso->t_perso2, sfTrue);
@@ -59,6 +61,7 @@ perso_t *perso, persorect_t *persorect)
     sfSprite_setTextureRect(perso->s_perso2, persorect->rect2);
     sfRenderWindow_drawSprite(hunter->window, perso->s_cursor, NULL);
     sfRenderWindow_drawSprite(hunter->window, tex->s_tube_back, NULL);
+    //score(tex, hunter, persorect);
     game_hit(tex, hunter);
 }
 
