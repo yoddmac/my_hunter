@@ -7,7 +7,8 @@
 
 #include "hunter.h"
 
-void create_sprite(hunter_t *hunter, texture_t *tex, perso_t *perso, persorect_t *persorect)
+void create_sprite(hunter_t *hunter, texture_t *tex, perso_t *perso,
+    persorect_t *persorect)
 {
     tex->s_back = sfSprite_create();
     perso->s_game_over = sfSprite_create();
@@ -21,7 +22,7 @@ void create_sprite(hunter_t *hunter, texture_t *tex, perso_t *perso, persorect_t
 }
 
 void create_texture(texture_t *tex, perso_t *perso, temp_t *time,
-hunter_t *hunter)
+    hunter_t *hunter)
 {
     hunter->music = sfMusic_createFromFile("./png/menu.ogg");
     hunter->buffer = sfSoundBuffer_createFromFile("./png/sniper.ogg");
@@ -35,8 +36,8 @@ hunter_t *hunter)
     tex->clock_text = sfClock_create();
 }
 
-void set_texture(hunter_t *hunter, texture_t * tex, perso_t *perso, 
-persorect_t *persorect)
+void set_texture(hunter_t *hunter, texture_t * tex, perso_t *perso,
+    persorect_t *persorect)
 {
     sfSound_setBuffer(hunter->sound, hunter->buffer);
     sfSprite_setTexture(tex->s_tube_back, tex->t_tube_back, sfTrue);
@@ -50,7 +51,7 @@ persorect_t *persorect)
 }
 
 void draw_texture(hunter_t *hunter, texture_t *tex,
-perso_t *perso, persorect_t *persorect)
+    perso_t *perso, persorect_t *persorect)
 {
     sfRenderWindow_drawSprite(hunter->window, tex->s_back, NULL);
     sfRenderWindow_drawSprite(hunter->window, perso->s_perso, NULL);
@@ -66,7 +67,7 @@ perso_t *perso, persorect_t *persorect)
 }
 
 void destroy_all(hunter_t *hunter, texture_t *tex,
-perso_t *perso, persorect_t *persorect)
+    perso_t *perso, persorect_t *persorect)
 {
     sfTexture_destroy(perso->t_perso);
     sfTexture_destroy(tex->t_background);

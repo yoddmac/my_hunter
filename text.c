@@ -7,14 +7,10 @@
 
 #include "hunter.h"
 
-void text_create (texture_t *tex)
+void text_create(texture_t *tex)
 {
     tex->text = sfText_create();
     tex->text_score = sfText_create();
-}
-
-void text_from(texture_t *tex)
-{
     tex->font = sfFont_createFromFile("./text/hit.ttf");
 }
 
@@ -31,14 +27,10 @@ void write_text(texture_t *tex, persorect_t *persorect)
     sfText_setString(tex->text_score, persorect->char_score);
 }
 
-void size_text(texture_t *tex) 
+void size_text(texture_t *tex)
 {
     sfText_setCharacterSize(tex->text, 50);
     sfText_setCharacterSize(tex->text_score, 50);
-}
-
-void set_text_color(texture_t *tex)
-{
     sfText_setColor(tex->text, sfWhite);
     sfText_setColor(tex->text_score, sfRed);
 }

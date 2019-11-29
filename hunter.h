@@ -118,3 +118,6 @@ void draw_text(texture_t *tex, hunter_t *hunter);
 int random_gen();
 void score(texture_t *tex, hunter_t *hunter, persorect_t *persorect);
 void end_game(persorect_t *persorect, perso_t *perso);
+int shoot (hunter_t *hunter, perso_t *perso, persorect_t* persorect, texture_t *tex);
+void check_touch(hunter_t *hunter, persorect_t *persorect, perso_t *perso, texture_t *tex);
+void free_malloc(hunter_t **hunter, texture_t **tex, perso_t **perso, persorect_t **persorect, temp_t **time);

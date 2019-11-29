@@ -14,7 +14,10 @@ SRC	=	open_window.c \
 		move_perso.c \
 		text.c \
 		my_revstr.c \
-		end_game.c
+		end_game.c \
+		shoot.c \
+		main.c \
+		displayhit.c
 
 OBJ	=$(SRC:.c=.o)
 
