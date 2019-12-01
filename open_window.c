@@ -54,6 +54,6 @@ void window(hunter_t *hunter, texture_t *tex, perso_t *perso,
         draw_texture(hunter, tex, perso, persorect);
         sfRenderWindow_display(hunter->window);
     }
-    free_malloc(hunter, tex, perso, persorect, time);
     destroy_all(hunter, tex, perso, persorect);
+    free_malloc(hunter, tex, perso, persorect, time);
 }

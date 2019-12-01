@@ -134,3 +134,6 @@ perso_t *perso, texture_t *tex);
 void free_malloc(hunter_t **hunter, texture_t **tex, perso_t **perso,
 persorect_t **persorect, temp_t **time);
 void cursor(hunter_t *hunter, perso_t *perso, persorect_t *persorect);
+void my_putstr(char const *str);
+void help(void);
+void my_putchar(char c);

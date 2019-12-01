@@ -22,8 +22,10 @@ SRC	=	open_window.c \
 		text.c \
 		shoot.c \
 		main.c \
-		displayhit.c
-
+		displayhit.c \
+		readme.c \
+		my_putstr.c \
+		my_putchar.c
 OBJ	=$(SRC:.c=.o)
 
 all: compil
