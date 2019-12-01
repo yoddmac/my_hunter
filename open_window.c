@@ -30,7 +30,6 @@ void init_window(hunter_t *hunter, texture_t *tex, perso_t *perso,
     persorect->direction = 1;
     persorect->direction2 = 1;
     persorect->life = 0;
-    persorect->nb_bong = 0;
     hunter->window = sfRenderWindow_create(hunter->video,
     "Window Hunter", sfResize | sfClose, NULL);
 }
@@ -48,7 +47,6 @@ void window(hunter_t *hunter, texture_t *tex, perso_t *perso,
     while (sfRenderWindow_isOpen(hunter->window)) {
         while (sfRenderWindow_pollEvent(hunter->window, &hunter->event)) {
             analyse_events(hunter, perso, persorect, tex);
-            end_game(persorect, perso);
         }
         move_perso(time, persorect, perso, hunter);
         sfRenderWindow_clear(hunter->window, sfBlack);
@@ -56,38 +54,6 @@ void window(hunter_t *hunter, texture_t *tex, perso_t *perso,
         draw_texture(hunter, tex, perso, persorect);
         sfRenderWindow_display(hunter->window);
     }
-    destroy_all(hunter, tex, perso, persorect);
     free_malloc(hunter, tex, perso, persorect, time);
+    destroy_all(hunter, tex, perso, persorect);
 }
-
-/*char* my_itoa(int n)
-{
-    char *res;
-    int i = 0;
-    res = malloc(sizeof(char) * 6);
-
-    if (nbr == 0) {
-        res[i] = '0';
-        res[i + 1] = '\0';
-        return (res);
-    }
-    while(nbr > 0) {
-        res[i] = '0';
-        res[i] = nbr % 10;
-        nbr /= 10;
-        i++;
-    }
-    res[i] = '\0';
-    my_revstr(res);
-    //printf("%s\n", res);
-    return (res);
-}*/
-
-/*void score(texture_t *tex, hunter_t *hunter, persorect_t *persorect)
-{
-    persorect->score = 0;
-    persorect->char_score = my_itoa(score);
-    sfText_setPosition(tex->text_score, (sfVector2f){50, 0});
-    sfRenderWindow_drawText(hunter->window, tex->text_score, NULL);
-
-}*/

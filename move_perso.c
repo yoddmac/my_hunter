@@ -51,13 +51,13 @@ int move_perso(temp_t *time, persorect_t *persorect,
     }
 }
 
-int random_gen()
+int random_gen(void)
 {
     int num = (rand() % 2 - 1 + 1);
     return (num);
 }
 
-int random_gen2()
+int random_gen2(void)
 {
     int num = (rand() % 3 - 1 + 1);
     return (num);

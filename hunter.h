@@ -10,7 +10,6 @@
 #include <time.h>
 #include <SFML/Audio.h>
 #include <stdio.h>
-#include <event.h>
 #include <SFML/Window.h>
 #include <SFML/System.h>
 #include <SFML/Audio.h>
@@ -56,7 +55,7 @@ typedef struct persorect_s
     char *char_score;
     int fail;
     int life;
-    int nb_bong;
+    int nb_miss;
 
     sfSprite *s_persorect;
     sfSprite *s_persorect2;
@@ -77,7 +76,7 @@ typedef struct texture_s
     sfSprite *s_tube_back;
 
     sfText *text_score;
-    
+
     sfText *text;
     sfFont *font;
     sfClock *clock_text;
@@ -98,26 +97,40 @@ typedef struct temp_s
 
 void game_hit(texture_t *tex, hunter_t *window);
 void display_hit(texture_t *tex, hunter_t *hunter, persorect_t *persorect);
-int move_perso(temp_t *time, persorect_t *persorect, perso_t *perso, hunter_t *hunter);
-int move_perso2(temp_t *time, persorect_t *persorect, perso_t *perso, hunter_t *hunter);
-void analyse_events(hunter_t *hunter, perso_t *perso, persorect_t *persorect, texture_t *tex);
-void window(hunter_t *hunter, texture_t *tex, perso_t *perso, persorect_t *persorect, temp_t *time);
-void create_sprite(hunter_t *window, texture_t *tex, perso_t *perso, persorect_t *persorect);
-void create_texture(texture_t *tex, perso_t *perso, temp_t *time, hunter_t *hunter);
-void set_texture(hunter_t *hunter, texture_t *tex, perso_t *perso, persorect_t *persorect);
-void draw_texture(hunter_t *hunter, texture_t *tex, perso_t *perso, persorect_t *persorect);
-void destroy_all(hunter_t *hunter, texture_t *tex, perso_t *perso, persorect_t *persorect);
-void malloc_struct(hunter_t **hunter, texture_t **tex, perso_t **perso, persorect_t **persorect, temp_t **time);
+int move_perso(temp_t *time, persorect_t *persorect, perso_t *perso,
+hunter_t *hunter);
+int move_perso2(temp_t *time, persorect_t *persorect, perso_t *perso,
+hunter_t *hunter);
+void analyse_events(hunter_t *hunter, perso_t *perso, persorect_t *persorect,
+texture_t *tex);
+void window(hunter_t *hunter, texture_t *tex, perso_t *perso,
+persorect_t *persorect, temp_t *time);
+void create_sprite(hunter_t *window, texture_t *tex,
+perso_t *perso, persorect_t *persorect);
+void create_texture(texture_t *tex, perso_t *perso,
+temp_t *time, hunter_t *hunter);
+void set_texture(hunter_t *hunter, texture_t *tex, perso_t *perso,
+persorect_t *persorect);
+void draw_texture(hunter_t *hunter, texture_t *tex, perso_t *perso,
+persorect_t *persorect);
+void destroy_all(hunter_t *hunter, texture_t *tex, perso_t *perso,
+persorect_t *persorect);
+void malloc_struct(hunter_t **hunter, texture_t **tex, perso_t **perso,
+persorect_t **persorect, temp_t **time);
 void text_create(texture_t *tex);
 void text_from(texture_t *tex);
 void text_font(texture_t *tex);
-void write_text(texture_t *tex, persorect_t *persorect);
+void write_text(texture_t *tex,
+persorect_t *persorect);
 void size_text(texture_t *tex);
 void set_text_color(texture_t *tex);
 void draw_text(texture_t *tex, hunter_t *hunter);
 int random_gen();
 void score(texture_t *tex, hunter_t *hunter, persorect_t *persorect);
-void end_game(persorect_t *persorect, perso_t *perso);
-int shoot (hunter_t *hunter, perso_t *perso, persorect_t* persorect, texture_t *tex);
-void check_touch(hunter_t *hunter, persorect_t *persorect, perso_t *perso, texture_t *tex);
-void free_malloc(hunter_t **hunter, texture_t **tex, perso_t **perso, persorect_t **persorect, temp_t **time);
+int shoot (hunter_t *hunter, perso_t *perso,
+persorect_t *persorect, texture_t *tex);
+void check_touch(hunter_t *hunter, persorect_t *persorect,
+perso_t *perso, texture_t *tex);
+void free_malloc(hunter_t **hunter, texture_t **tex, perso_t **perso,
+persorect_t **persorect, temp_t **time);
+void cursor(hunter_t *hunter, perso_t *perso, persorect_t *persorect);

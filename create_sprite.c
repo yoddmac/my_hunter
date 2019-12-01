@@ -62,7 +62,6 @@ void draw_texture(hunter_t *hunter, texture_t *tex,
     sfSprite_setTextureRect(perso->s_perso2, persorect->rect2);
     sfRenderWindow_drawSprite(hunter->window, perso->s_cursor, NULL);
     sfRenderWindow_drawSprite(hunter->window, tex->s_tube_back, NULL);
-    //score(tex, hunter, persorect);
     game_hit(tex, hunter);
 }
 
@@ -70,6 +69,22 @@ void destroy_all(hunter_t *hunter, texture_t *tex,
     perso_t *perso, persorect_t *persorect)
 {
     sfTexture_destroy(perso->t_perso);
+    sfSprite_destroy(perso->s_perso);
+    sfTexture_destroy(perso->t_cursor);
+    sfSprite_destroy(perso->s_cursor);
+    sfTexture_destroy(perso->t_perso2);
+    sfSprite_destroy(perso->s_perso2);
+    sfTexture_destroy(tex->t_tube_back);
+    sfSprite_destroy(tex->s_tube_back);
+    sfTexture_destroy(perso->t_game_over);
+    sfSprite_destroy(perso->s_game_over);
+    sfSprite_destroy(tex->s_back);
     sfTexture_destroy(tex->t_background);
+    sfSprite_destroy(persorect->s_persorect);
+    sfSprite_destroy(persorect->s_persorect2);
+
+    sfText_destroy(tex->text);
+    sfText_destroy(tex->text_score);
+
     sfRenderWindow_destroy(hunter->window);
 }

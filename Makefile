@@ -1,3 +1,10 @@
+##
+## EPITECH PROJECT, 2019
+## Makefile
+## File description:
+## Makefile
+##
+
 CC	=	gcc
 
 RM	=	rm -rf
@@ -13,8 +20,6 @@ SRC	=	open_window.c \
 		malloc.c \
 		move_perso.c \
 		text.c \
-		my_revstr.c \
-		end_game.c \
 		shoot.c \
 		main.c \
 		displayhit.c

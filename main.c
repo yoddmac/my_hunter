@@ -7,7 +7,7 @@
 
 #include "hunter.h"
 
-int main()
+int main(void)
 {
     hunter_t *hunter;
     texture_t *tex;
